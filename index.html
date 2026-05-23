@@ -1,1 +1,106 @@
-├── index.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TO Checker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <h1>Turn Over Check</h1>
+
+            <div class="contact">
+
+                <div>Jika Ada Kendala</div>
+
+                <a href="https://wa.me/855765772633" target="_blank">
+                    Klik WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="info">
+            Paste full history transaksi lalu klik Hitung TO
+        </div>
+
+        <textarea
+            id="inputData"
+            placeholder="Paste history transaksi disini..."
+        ></textarea>
+
+        <button onclick="hitungTO()">
+            Hitung TO
+        </button>
+
+        <div class="summary">
+
+            <div class="card">
+                <h3>Jenis TO</h3>
+                <p id="bonusType">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Saldo Dasar</h3>
+                <p id="bonusSaldo">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Target TO</h3>
+                <p id="targetTO">0</p>
+            </div>
+
+            <div class="card">
+                <h3>TO Dimainkan</h3>
+                <p id="playedTO">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Sisa TO</h3>
+                <p id="sisaTO">0</p>
+            </div>
+
+        </div>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Game</th>
+                    <th>Deskripsi</th>
+                    <th>Debit</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="resultBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="footer">
+        BY SIS4D
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
