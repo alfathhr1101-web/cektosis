@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TO Checker</title>
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container{
+            max-width: 1400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1{
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        textarea{
+            width: 100%;
+            height: 260px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+
+        button{
+            background: green;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: darkgreen;
+        }
+
+        .summary{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .card{
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .card h3{
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .card p{
+            margin-top: 10px;
+            margin-bottom: 0;
+            font-size: 28px;
+            font-weight: bold;
+            color: green;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th{
+            background: #f0f0f0;
+        }
+
+        table th,
+        table td{
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .info{
+            margin-bottom: 20px;
+            color: #666;
+        }
+.footer{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.contact{
+    text-align: right;
+    font-size: 14px;
+}
+
+.contact a{
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+
+.contact a:hover{
+    text-decoration: underline;
+}
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+       <div class="topbar">
+
+    <h1>Turn Over Checker</h1>
+
+    <div class="contact">
+
+        <div>Jika Ada Kendala</div>
+
+        <a href="https://wa.me/855765772633" target="_blank">
+            Klik WhatsApp
+        </a>
+
+    </div>
+
+</div>
+
+        
+        <div class="info">
+            Paste full history transaksi lalu klik Hitung TO
+        </div>
+
+        <textarea
+            id="inputData"
+            placeholder="Paste history transaksi disini..."
+        ></textarea>
+
+        <button onclick="hitungTO()">
+            Hitung TO
+        </button>
+
+        <div class="summary">
+
+            <div class="card">
+                <h3>Jenis TO</h3>
+                <p id="bonusType">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Saldo Dasar</h3>
+                <p id="bonusSaldo">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Target TO</h3>
+                <p id="targetTO">0</p>
+            </div>
+
+            <div class="card">
+                <h3>TO Dimainkan</h3>
+                <p id="playedTO">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Sisa TO</h3>
+                <p id="sisaTO">0</p>
+            </div>
+
+        </div>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Game</th>
+                    <th>Deskripsi</th>
+                    <th>Debit</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="resultBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+<div class="footer">
+    BY SIS4D
+</div>
+    <script>
+
+        function hitungTO(){
+
+            const input =
+                document.getElementById("inputData").value;
+
+            const lines =
+                input.split("\n");
+
+            let totalTO = 0;
+
+            let targetTO = 0;
+
+            let saldoBonus = 0;
+
+            let jenisBonus = "-";
+
+            let multiplier = 0;
+
+            let tbody = "";
+
+            // ====================================
+            // CEK TRANSAKSI TERBARU
+            // ====================================
+
+            for(let line of lines){
+
+                const cols =
+                    line.split("\t");
+
+                // ====================================
+                // BONUS MANIAK SLOT
+                // ====================================
+
+                if(
+                    line.includes("BONUS MANIAK SLOT")
+                ){
+
+                    let balance =
+                        cols[8] || "0";
+
+                    balance =
+                        balance.replace(/,/g, "");
+
+                    balance =
+                        parseFloat(balance);
+
+                    if(!isNaN(balance)){
+
+                        saldoBonus = balance;
+
+                        multiplier = 5;
+
+                        targetTO =
+                            saldoBonus * multiplier;
+
+                        jenisBonus =
+                            "MANIAK SLOT";
+
+                        break;
+                    }
+
+                }
+
+                // ====================================
+                // QRIS
+                // ====================================
+
+                if(
+                    line.includes("APPROVED")
+                    &&
+                    line.includes("QRIS")
+                ){
+
+                    let deposit =
+                        cols[7] || "0";
+
+                    deposit =
+                        deposit.replace(/,/g, "");
+
+                    deposit =
+                        parseFloat(deposit);
+
+                    if(
+                        !isNaN(deposit)
+                        &&
+                        deposit > 0
+                    ){
+
+                        saldoBonus = deposit;
+
+                        multiplier = 1;
+
+                        targetTO =
+                            saldoBonus * multiplier;
+
+                        jenisBonus =
+                            "QRIS";
+
+                        break;
+                    }
+
+                }
+
+                // ====================================
+                // PULSA
+                // ====================================
+
+                if(
+
+                    line.includes("APPROVED Telkomsel")
+                    ||
+                    line.includes("APPROVED Axiata")
+                    ||
+                    line.includes("APPROVED XL")
+                    ||
+                    line.includes("APPROVED Indosat")
+
+                ){
+
+                    let balance =
+                        cols[8] || "0";
+
+                    balance =
+                        balance.replace(/,/g, "");
+
+                    balance =
+                        parseFloat(balance);
+
+                    if(
+                        !isNaN(balance)
+                        &&
+                        balance > 0
+                    ){
+
+                        saldoBonus = balance;
+
+                        multiplier = 3;
+
+                        targetTO =
+                            saldoBonus * multiplier;
+
+                        jenisBonus =
+                            "PULSA";
+
+                        break;
+                    }
+
+                }
+
+                // ====================================
+                // DANA = NO TO
+                // ====================================
+
+                if(
+                    line.includes("APPROVED DANA")
+                ){
+
+                    jenisBonus =
+                        "NO TO";
+
+                    saldoBonus = 0;
+
+                    targetTO = 0;
+
+                    multiplier = 0;
+
+                    break;
+                }
+
+            }
+
+            // ====================================
+            // HITUNG TO
+            // ====================================
+
+            lines.forEach(line => {
+
+                // skip withdraw
+                if(
+                    line.includes("Withdraw")
+                ){
+                    return;
+                }
+
+                const cols =
+                    line.split("\t");
+
+                const tanggal =
+                    cols[1] || "-";
+
+                const game =
+                    cols[3] || "-";
+
+                const deskripsi =
+                    cols[5] || "-";
+
+                let debit =
+                    cols[6] || "0";
+
+                debit =
+                    debit.replace(/,/g, "");
+
+                debit =
+                    parseFloat(debit);
+
+                if(
+                    isNaN(debit)
+                    ||
+                    debit <= 0
+                ){
+                    return;
+                }
+
+                // ====================================
+                // NO TO
+                // ====================================
+
+                if(
+                    jenisBonus === "NO TO"
+                ){
+                    return;
+                }
+
+                // ====================================
+                // MANIAK SLOT
+                // ====================================
+
+                if(
+                    jenisBonus === "MANIAK SLOT"
+                ){
+
+                    if(
+                        !line.includes("Video Slots")
+                    ){
+                        return;
+                    }
+
+                }
+
+                // ====================================
+                // QRIS / PULSA
+                // ====================================
+
+                if(
+                    jenisBonus === "QRIS"
+                    ||
+                    jenisBonus === "PULSA"
+                ){
+
+                    const isGame =
+
+                        line.includes("Slots")
+                        ||
+                        line.includes("Live")
+                        ||
+                        line.includes("Sports")
+                        ||
+                        line.includes("JiLi Gaming")
+
+                    if(!isGame){
+                        return;
+                    }
+
+                }
+
+                // ====================================
+                // TOTALKAN
+                // ====================================
+
+                totalTO += debit;
+
+                tbody += `
+
+                    <tr>
+
+                        <td>
+                            ${tanggal}
+                        </td>
+
+                        <td>
+                            ${game}
+                        </td>
+
+                        <td>
+                            ${deskripsi}
+                        </td>
+
+                        <td>
+                            ${debit.toLocaleString()}
+                        </td>
+
+                    </tr>
+
+                `;
+
+            });
+
+            // ====================================
+            // SISA TO
+            // ====================================
+
+            let sisaTO =
+                targetTO - totalTO;
+
+            if(sisaTO < 0){
+                sisaTO = 0;
+            }
+
+            // ====================================
+            // TAMPILKAN
+            // ====================================
+
+            document.getElementById("bonusType")
+                .innerText =
+                jenisBonus;
+
+            document.getElementById("bonusSaldo")
+                .innerText =
+                saldoBonus.toLocaleString();
+
+            document.getElementById("targetTO")
+                .innerText =
+                targetTO.toLocaleString();
+
+            document.getElementById("playedTO")
+                .innerText =
+                totalTO.toLocaleString();
+
+            document.getElementById("sisaTO")
+                .innerText =
+                sisaTO.toLocaleString();
+
+            document.getElementById("resultBody")
+                .innerHTML =
+                tbody;
+
+        }
+
+    </script>
+
+</body>
+</html>
