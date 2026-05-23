@@ -180,6 +180,9 @@ function hitungTO(){
 
         const deskripsi =
             cols[5] || "-";
+        
+        const transaksiID =
+            cols[4] || "-";
 
         let debit =
             cols[6] || "0";
@@ -250,6 +253,8 @@ function hitungTO(){
                 <td>${tanggal}</td>
 
                 <td>${game}</td>
+
+                <td>${transaksiID}</td>
 
                 <td>${deskripsi}</td>
 
