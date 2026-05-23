@@ -57,6 +57,43 @@ function hitungTO(){
             }
 
         }
+        // ====================================
+// BONUS LUCKY SPIN
+// ====================================
+
+if(
+
+    line.includes("LUCKY SPIN")
+    ||
+    line.includes("Lucky Spin")
+
+){
+
+    let balance =
+        cols[8] || "0";
+
+    balance =
+        balance.replace(/,/g, "");
+
+    balance =
+        parseFloat(balance);
+
+    if(!isNaN(balance)){
+
+        saldoBonus = balance;
+
+        multiplier = 8;
+
+        targetTO =
+            saldoBonus * multiplier;
+
+        jenisBonus =
+            "LUCKY SPIN";
+
+        break;
+    }
+
+}
 
         // QRIS
         if(
@@ -210,8 +247,12 @@ function hitungTO(){
 
         // MANIAK SLOT
         if(
-            jenisBonus === "MANIAK SLOT"
-        ){
+
+    jenisBonus === "MANIAK SLOT"
+    ||
+    jenisBonus === "LUCKY SPIN"
+
+){
 
             if(
                 !line.includes("Video Slots")

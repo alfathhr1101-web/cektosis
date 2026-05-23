@@ -1,42 +1,85 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>TO CHECK SIS</title>
+    <title>TO CHECK</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <!-- favicon -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="64x64"
+        href="assets/logo.png"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        href="assets/logo.png"
+    >
+
+    <!-- css -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
 </head>
 
 <body>
-<div class="loading" id="loading">
 
-    <div class="loader-box">
+    <!-- intro loading -->
+
+<div class="intro-loading" id="introLoading">
+
+    <div class="intro-box">
 
         <img
-    src="assets/logo.png"
-    class="loading-logo"
-/>
+            src="assets/logo.png"
+            class="intro-logo"
+        >
+
 
     </div>
 
 </div>
+
+    <!-- container -->
+
     <div class="container">
+
+        <!-- topbar -->
 
         <div class="topbar">
 
-            <h1>Turn Over Check</h1>
+            <div class="logo-area">
+
+                <img
+                    src="assets/logo.png"
+                    class="header-logo"
+                >
+
+                <h1>Turn Over Check</h1>
+
+            </div>
 
             <div class="contact">
 
                 <div>Jika Ada Kendala</div>
 
-                <a href="https://wa.me/855765772633" target="_blank">
+                <a
+                    href="https://wa.me/855765772633"
+                    target="_blank"
+                >
                     Klik WhatsApp
                 </a>
 
@@ -44,75 +87,121 @@
 
         </div>
 
+        <!-- info -->
+
         <div class="info">
+
             Paste full history transaksi lalu klik Hitung TO
+
         </div>
+
+        <!-- textarea -->
 
         <textarea
             id="inputData"
             placeholder="Paste history transaksi disini..."
         ></textarea>
 
+        <!-- button -->
+
         <button onclick="hitungTO()">
+
             Hitung TO
+
         </button>
+
+        <!-- summary -->
 
         <div class="summary">
 
             <div class="card">
+
                 <h3>Jenis TO</h3>
+
                 <p id="bonusType">-</p>
+
             </div>
 
             <div class="card">
+
                 <h3>Saldo Dasar</h3>
+
                 <p id="bonusSaldo">0</p>
+
             </div>
 
             <div class="card">
+
                 <h3>Target TO</h3>
+
                 <p id="targetTO">0</p>
+
             </div>
 
             <div class="card">
+
                 <h3>TO Dimainkan</h3>
+
                 <p id="playedTO">0</p>
+
             </div>
 
             <div class="card">
+
                 <h3>Sisa TO</h3>
+
                 <p id="sisaTO">0</p>
+
             </div>
 
         </div>
 
-        <table>
+        <!-- table -->
 
-            <thead>
+        <div class="table-wrapper">
 
-                <tr>
-                    <th>Tanggal</th>
-                    <th>Game</th>
-                    <th>ID Transaksi</th>
-                    <th>Deskripsi</th>
-                    <th>Debit</th>
-                </tr>
+            <table>
 
-            </thead>
+                <thead>
 
-            <tbody id="resultBody">
+                    <tr>
 
-            </tbody>
+                        <th>Tanggal</th>
 
-        </table>
+                        <th>Game</th>
+
+                        <th>ID Transaksi</th>
+
+                        <th>Deskripsi</th>
+
+                        <th>Debit</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="resultBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
+
+    <!-- footer -->
 
     <div class="footer">
+
         BY SIS4D
+
     </div>
+
+    <!-- js -->
 
     <script src="js/script.js"></script>
 
 </body>
+
 </html>
