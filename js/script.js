@@ -298,3 +298,15 @@ function hitungTO(){
         tbody;
 
 }
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document
+            .getElementById("introLoading")
+            .classList.add("hide");
+
+    }, 1800);
+
+});
