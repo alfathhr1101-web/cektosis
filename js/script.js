@@ -277,6 +277,10 @@ if(
                 ||
                 line.includes("Sports")
                 ||
+line.includes(
+    "Megawin Gaming"
+)
+                ||
                 line.includes("JiLi Gaming");
 
             if(!isGame){
@@ -333,7 +337,56 @@ if(
     document.getElementById("sisaTO")
         .innerText =
         sisaTO.toLocaleString();
+// ====================================
+// PROGRESS BAR
+// ====================================
 
+let percent = 0;
+
+if(targetTO > 0){
+
+    percent =
+        (totalTO / targetTO) * 100;
+
+    if(percent > 100){
+        percent = 100;
+    }
+
+}
+
+percent =
+    percent.toFixed(0);
+
+document.getElementById(
+    "progressPercent"
+).innerText =
+    percent + "%";
+
+const progressFill =
+    document.getElementById(
+        "progressFill"
+    );
+
+progressFill.style.width =
+    percent + "%";
+
+// warna progress
+
+if(percent < 50){
+
+    progressFill.style.background =
+        "#ef4444";
+
+}else if(percent < 90){
+
+    progressFill.style.background =
+        "#f59e0b";
+
+}else{
+
+    progressFill.style.background =
+        "#22c55e";
+}
     document.getElementById("resultBody")
         .innerHTML =
         tbody;
@@ -352,3 +405,56 @@ window.addEventListener("load", () => {
 
 });
 
+// ====================================
+// COPY HASIL
+// ====================================
+
+function copyHasil(){
+
+    const target =
+        document.getElementById(
+            "targetTO"
+        ).innerText;
+
+    const played =
+        document.getElementById(
+            "playedTO"
+        ).innerText;
+
+    const sisa =
+        document.getElementById(
+            "sisaTO"
+        ).innerText;
+
+    const jenis =
+    document.getElementById(
+        "bonusType"
+    ).innerText;
+
+const hasil =
+
+`Jenis TO : ${jenis}
+Target TO : ${target}
+TO Dimainkan : ${played}
+Sisa TO : ${sisa}`;
+
+    navigator.clipboard.writeText(
+        hasil
+    );
+const toast =
+    document.getElementById(
+        "toast"
+    );
+
+toast.classList.add("show");
+
+setTimeout(() => {
+
+    toast.classList.remove(
+        "show"
+    );
+
+}, 2000);
+    
+
+}

@@ -28,7 +28,7 @@
 
     <!-- css -->
 
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/style.min.css">
 
 </head>
 
@@ -67,7 +67,7 @@
 
                 <h1>Turn Over Check</h1>
             </div>
-            
+
             <div class="contact">
 
                 <div>Jika Ada Kendala</div>
@@ -87,7 +87,7 @@
 
         <div class="info">
 
-            Paste full history transaksi lalu klik Hitung TO
+            Paste full history transaksi bre
 
         </div>
 
@@ -95,16 +95,25 @@
 
         <textarea
             id="inputData"
-            placeholder="Paste history transaksi disini..."
+            placeholder="Paste history transaksi disini bre..."
         ></textarea>
 
         <!-- button -->
 
-        <button onclick="hitungTO()">
+       <div class="action-buttons">
 
-            Hitung TO
+    <button onclick="hitungTO()">
+        Hitung TO Bre
+    </button>
 
-        </button>
+    <button
+        class="copy-btn"
+        onclick="copyHasil()"
+    >
+        Copy Hasil Bre
+    </button>
+
+</div>
 
         <!-- summary -->
 
@@ -152,6 +161,28 @@
 
         </div>
 
+        <div class="progress-wrapper">
+
+    <div class="progress-info">
+
+        <span>Progress TO</span>
+
+        <span id="progressPercent">
+            0%
+        </span>
+
+    </div>
+
+    <div class="progress-bar">
+
+        <div
+            class="progress-fill"
+            id="progressFill"
+        ></div>
+
+    </div>
+
+</div>
         <!-- table -->
 
         <div class="table-wrapper">
@@ -196,8 +227,10 @@
 
     <!-- js -->
 
-    <script src="js/script.js"></script>
-
+    <script src="js/app.min.js"></script>
+<div id="toast" class="toast">
+    Berhasil di copy bre😎
+</div>
 </body>
 
 </html>
