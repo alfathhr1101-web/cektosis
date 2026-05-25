@@ -836,3 +836,21 @@ body.dark .toast{
     }
 
 }
+
+/* =========================================
+   TEXT SELECTION
+========================================= */
+
+::selection{
+
+    background: #ff4fa3;
+
+    color: white;
+}
+
+::-moz-selection{
+
+    background: #ff4fa3;
+
+    color: white;
+}
