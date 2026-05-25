@@ -51,7 +51,7 @@ function hitungTO(){
                     saldoBonus * multiplier;
 
                 jenisBonus =
-                    "MANIAK SLOT";
+                    "MANIAK";
 
                 break;
             }
@@ -433,10 +433,8 @@ function copyHasil(){
 
 const hasil =
 
-`Jenis TO : ${jenis}
-Target TO : ${target}
-TO Dimainkan : ${played}
-Sisa TO : ${sisa}`;
+`TO ${jenis} : ${target}
+Sisa : ${sisa}`;
 
     navigator.clipboard.writeText(
         hasil
