@@ -854,3 +854,74 @@ body.dark .toast{
 
     color: white;
 }
+
+/* =========================================
+   RUNNING TEXT
+========================================= */
+
+.running-text{
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border:
+        1px solid #ffd0e4;
+
+    background:
+        rgba(255,255,255,0.7);
+
+    border-radius: 16px;
+
+    margin-bottom: 20px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+}
+
+body.dark .running-text{
+
+    background: #1e293b;
+
+    border-color: #334155;
+}
+
+.running-content{
+
+    position: absolute;
+
+    white-space: nowrap;
+
+    color: #ff4fa3;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    animation:
+        marquee 15s linear infinite;
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes marquee{
+
+    0%{
+
+        transform:
+            translateX(100%);
+    }
+
+    100%{
+
+        transform:
+            translateX(-100%);
+    }
+}
