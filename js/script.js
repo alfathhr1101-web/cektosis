@@ -458,3 +458,70 @@ setTimeout(() => {
     
 
 }
+
+// ====================================
+// DARK MODE
+// ====================================
+
+const themeToggle =
+    document.getElementById(
+        "themeToggle"
+    );
+
+// cek local storage
+
+if(
+
+    localStorage.getItem("theme")
+    === "dark"
+
+){
+
+    document.body.classList.add(
+        "dark"
+    );
+
+    themeToggle.innerHTML = "☀️";
+}
+
+// toggle mode
+
+themeToggle.addEventListener(
+    "click",
+    () => {
+
+        document.body.classList.toggle(
+            "dark"
+        );
+
+        // cek dark aktif
+
+        if(
+
+            document.body.classList.contains(
+                "dark"
+            )
+
+        ){
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            themeToggle.innerHTML =
+                "☀️";
+
+        }else{
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+            themeToggle.innerHTML =
+                "🌙";
+        }
+
+    }
+);
