@@ -1,83 +1,105 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #0f172a;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: #0f172a;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
 
-        .container {
-            max-width: 600px;
-            padding: 20px;
-        }
+.container {
+    max-width: 600px;
+    padding: 20px;
+}
 
-        h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
+h1 {
+    font-size: 40px;
+}
 
-        p {
-            font-size: 18px;
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
+p {
+    color: #cbd5e1;
+    font-size: 16px;
+    line-height: 1.6;
+}
 
-        .spinner {
-            margin: 30px auto;
-            width: 60px;
-            height: 60px;
-            border: 6px solid #334155;
-            border-top: 6px solid #38bdf8;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+.spinner {
+    margin: 25px auto;
+    width: 60px;
+    height: 60px;
+    border: 6px solid #334155;
+    border-top: 6px solid #38bdf8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
 
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #64748b;
-        }
-    </style>
+.contact {
+    margin-top: 25px;
+    padding: 15px;
+    background: #1e293b;
+    border-radius: 10px;
+}
+
+a.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background: #22c55e;
+}
+
+a.email {
+    background: #3b82f6;
+}
+</style>
+
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>🚧 Maintenance Mode</h1>
+<div class="container">
 
-        <div class="spinner"></div>
+    <h1>🚧 Maintenance Mode</h1>
 
-        <p>
-            Website sedang dalam proses maintenance.<br>
-            Kami sedang melakukan peningkatan sistem agar lebih cepat dan stabil.
-        </p>
+    <div class="spinner"></div>
 
-        <p>
-            Mohon kembali beberapa saat lagi.
-        </p>
+    <p>
+        Website sedang dalam perbaikan sistem.<br>
+        Kami sedang meningkatkan performa dan keamanan.
+    </p>
 
-        <div class="footer">
-            © 2026 Cektosis System
-        </div>
+    <p>Mohon kembali beberapa saat lagi.</p>
+
+    <!-- CONTACT PERSON -->
+    <div class="contact">
+        <p><b>Contact Person</b></p>
+
+        <p>Admin Cektosis</p>
+
+        <a class="button" href="https://wa.me/855765772633" target="_blank">
+            💬 WhatsApp
+        </a>
+
     </div>
+
+</div>
 
 </body>
 </html>
