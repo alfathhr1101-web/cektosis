@@ -1,257 +1,83 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0f172a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
 
-    <title>TO CHECK</title>
+        .container {
+            max-width: 600px;
+            padding: 20px;
+        }
 
-    <!-- favicon -->
+        h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
 
-    <link
-        rel="icon"
-        type="image/png"
-        sizes="64x64"
-        href="assets/logo.png"
-    >
+        p {
+            font-size: 18px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
 
-    <link
-        rel="apple-touch-icon"
-        href="assets/logo.png"
-    >
+        .spinner {
+            margin: 30px auto;
+            width: 60px;
+            height: 60px;
+            border: 6px solid #334155;
+            border-top: 6px solid #38bdf8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
 
-    <!-- css -->
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-   <link rel="stylesheet" href="css/style.min.css">
-
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #64748b;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- intro loading -->
-
-<div class="intro-loading" id="introLoading">
-
-    <div class="intro-box">
-
-        <img
-            src="assets/logo.png"
-            class="intro-logo"
-        >
-
-
-    </div>
-
-</div>
-
-    <!-- container -->
-
     <div class="container">
+        <h1>🚧 Maintenance Mode</h1>
 
-        <!-- topbar -->
+        <div class="spinner"></div>
 
-        <div class="topbar">
+        <p>
+            Website sedang dalam proses maintenance.<br>
+            Kami sedang melakukan peningkatan sistem agar lebih cepat dan stabil.
+        </p>
 
-    <div class="top-left">
+        <p>
+            Mohon kembali beberapa saat lagi.
+        </p>
 
-        <img
-            src="assets/logo.png"
-            class="header-logo"
-        >
-
-        <h1>Turn Over Check</h1>
-
-    </div>
-
-    <div class="top-right">
-
-        <button
-            id="themeToggle"
-            class="theme-btn"
-        >
-            🌙
-        </button>
-
-        <div class="contact">
-
-            <div>Jika Ada Kendala</div>
-
-            <a
-                href="https://wa.me/855765772633"
-                target="_blank"
-            >
-                Klik WhatsApp
-            </a>
-
+        <div class="footer">
+            © 2026 Cektosis System
         </div>
-
     </div>
 
-</div>
-
-        <!-- info -->
-<div class="running-text">
-
-    <div class="running-content">
-
-        SIS4D • MAKAN APA HARI INI • SIS4D
-
-    </div>
-
-</div>
-
-        <div class="info">
-
-            Paste full history transaksi bre
-
-        </div>
-
-        <!-- textarea -->
-
-        <textarea•
-            id="inputData"
-            placeholder="Paste history transaksi disini bre..."
-        ></textarea>
-
-        <!-- button -->
-
-       <div class="action-buttons">
-
-    <button onclick="hitungTO()">
-        Hitung TO Bre
-    </button>
-
-    <button
-        class="copy-btn"
-        onclick="copyHasil()"
-    >
-        Copy Hasil Bre
-    </button>
-
-</div>
-
-        <!-- summary -->
-
-        <div class="summary">
-
-            <div class="card">
-
-                <h3>Jenis TO</h3>
-
-                <p id="bonusType">-</p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Saldo Dasar</h3>
-
-                <p id="bonusSaldo">0</p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Target TO</h3>
-
-                <p id="targetTO">0</p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>TO Dimainkan</h3>
-
-                <p id="playedTO">0</p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Sisa TO</h3>
-
-                <p id="sisaTO">0</p>
-
-            </div>
-
-        </div>
-
-        <div class="progress-wrapper">
-
-    <div class="progress-info">
-
-        <span>Progress TO</span>
-
-        <span id="progressPercent">
-            0%
-        </span>
-
-    </div>
-
-    <div class="progress-bar">
-
-        <div
-            class="progress-fill"
-            id="progressFill"
-        ></div>
-
-    </div>
-
-</div>
-        <!-- table -->
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Tanggal</th>
-
-                        <th>Game</th>
-
-                        <th>ID Transaksi</th>
-
-                        <th>Deskripsi</th>
-
-                        <th>Debit</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="resultBody">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-    <!-- footer -->
-
-    <div class="footer">
-
-        © 2015 SIS4D. Allrights Reserved
-
-    </div>
-
-    <!-- js -->
-
-    <script src="js/app.min.js"></script>
-<div id="toast" class="toast">
-    Berhasil di copy bre😎
-</div>
 </body>
-
 </html>
