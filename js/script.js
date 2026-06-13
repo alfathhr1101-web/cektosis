@@ -277,9 +277,9 @@ if(
                 ||
                 line.includes("Sports")
                 ||
-line.includes(
-    "Megawin Gaming"
-)
+                line.includes("Megawin Gaming")
+                ||
+                line.includes("FastSpin")
                 ||
                 line.includes("JiLi Gaming");
 
