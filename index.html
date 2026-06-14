@@ -1,109 +1,334 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maintenance</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
-}
+    <meta charset="UTF-8">
 
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#0f172a;
-    color:#e5e7eb;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-/* container */
-.container{
-    text-align:center;
-    max-width:520px;
-    padding:30px;
-}
+    <title>TO CHECK</title>
 
-/* icon */
-.icon{
-    font-size:50px;
-    margin-bottom:15px;
-}
+    <!-- favicon -->
 
-/* title */
-h1{
-    font-size:26px;
-    margin-bottom:10px;
-    font-weight:600;
-}
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="64x64"
+        href="assets/logo.png"
+    >
 
-/* text */
-p{
-    font-size:14px;
-    color:#94a3b8;
-    line-height:1.6;
-}
+    <link
+        rel="apple-touch-icon"
+        href="assets/logo.png"
+    >
 
-/* small info */
-.small{
-    margin-top:12px;
-    font-size:12px;
-    color:#64748b;
-}
+    <!-- css -->
 
-/* button */
-a{
-    display:inline-block;
-    margin-top:20px;
-    padding:10px 18px;
-    border-radius:8px;
-    text-decoration:none;
-    color:white;
-    background:#22c55e;
-    font-size:13px;
-}
-
-a:hover{
-    opacity:0.9;
-}
-.logo{
-    width:115px;
-    margin-bottom:18px;
-    animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 25px rgba(56,189,248,0.3));
-}
-</style>
+   <link rel="stylesheet" href="css/style.min.css">
 
 </head>
 
 <body>
 
-<div class="container">
+    <!-- intro loading -->
 
-    <img src="assets/logo.png" class="logo">
+<div class="intro-loading" id="introLoading">
 
-    <div class="icon">🚧🚧🚧🚧🚧</div>
+    <div class="intro-box">
 
-    <h1>Website Sedang Maintenance</h1>
+        <img
+            src="assets/logo.png"
+            class="intro-logo"
+        >
 
-    <p>
-        Kami sedang melakukan perbaikan sistem untuk meningkatkan performa dan keamanan website.
-    </p>
 
-    <p class="small">
-        Mohon kembali beberapa saat lagi.
-    </p>
-
-    <a href="https://wa.me/855765772633" target="_blank">
-        Hubungi developer
-    </a>
+    </div>
 
 </div>
 
+    <!-- container -->
+
+    <div class="container">
+
+        <!-- topbar -->
+
+        <div class="topbar">
+
+    <div class="top-left">
+
+        <img
+            src="assets/logo.png"
+            class="header-logo"
+        >
+
+        <h1>Turn Over Check</h1>
+
+    </div>
+
+    <div class="top-right">
+
+        <button
+            id="themeToggle"
+            class="theme-btn"
+        >
+            🌙
+        </button>
+
+        <div class="contact">
+
+            <div>Jika Ada Kendala</div>
+
+            <a
+                href="https://wa.me/855765772633"
+                target="_blank"
+            >
+                Klik WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- info -->
+<div class="running-text">
+
+    <div class="running-content">
+
+        SIS4D •
+        SIS4D •
+        SIS4D •
+        SIS4D •
+        SIS4D •
+        SIS4D •
+        SIS4D •
+        SIS4D •
+        SIS4D •
+
+    </div>
+
+</div>
+
+        <div class="info">
+
+            Paste full history transaksi bre
+
+        </div>
+
+        <!-- textarea -->
+
+        <textarea
+            id="inputData"
+            placeholder="Paste history transaksi disini bre..."
+        ></textarea>
+
+        <!-- button -->
+
+       <div class="action-buttons">
+
+    <button onclick="hitungTO()">
+        Hitung TO Bre
+    </button>
+
+    <button
+        class="copy-btn"
+        onclick="copyHasil()"
+    >
+        Copy Hasil Bre
+    </button>
+
+</div>
+
+        <!-- summary -->
+
+        <div class="summary">
+
+            <div class="card">
+
+                <h3>Jenis TO</h3>
+
+                <p id="bonusType">-</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Saldo Dasar</h3>
+
+                <p id="bonusSaldo">0</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Target TO</h3>
+
+                <p id="targetTO">0</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>TO Dimainkan</h3>
+
+                <p id="playedTO">0</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Sisa TO</h3>
+
+                <p id="sisaTO">0</p>
+
+            </div>
+
+        </div>
+
+        <div class="progress-wrapper">
+
+    <div class="progress-info">
+
+        <span>Progress TO</span>
+
+        <span id="progressPercent">
+            0%
+        </span>
+
+    </div>
+
+    <div class="progress-bar">
+
+        <div
+            class="progress-fill"
+            id="progressFill"
+        ></div>
+
+    </div>
+
+</div>
+        <!-- table -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Tanggal</th>
+
+                        <th>Game</th>
+
+                        <th>ID Transaksi</th>
+
+                        <th>Deskripsi</th>
+
+                        <th>Debit</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="resultBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- footer -->
+
+    <div class="footer">
+
+        © 2015 SIS4D. Allrights Reserved
+
+    </div>
+
+    <!-- js -->
+
+    <script src="js/app.min.js"></script>
+<div id="toast" class="toast">
+    Berhasil di copy bre😎
+</div>
+<link rel="stylesheet" href="css/style.min.css">
+
+<style>
+    :root {
+        --green-main: #00ff88;
+        --green-dark: #003d25;
+        --green-soft: #00c96b;
+        --green-glow: rgba(0, 255, 136, 0.75);
+    }
+
+    body {
+        background: linear-gradient(135deg, #001f14, #003d25, #000);
+    }
+
+    .topbar,
+    .card,
+    .table-wrapper,
+    .progress-wrapper,
+    .info,
+    .running-text,
+    .contact,
+    .toast {
+        border-color: var(--green-main) !important;
+        box-shadow: 0 0 18px var(--green-glow) !important;
+    }
+
+    h1,
+    .info,
+    .running-content,
+    .card h3,
+    .card p,
+    .progress-info,
+    th,
+    td {
+        color: var(--green-main) !important;
+        text-shadow: 0 0 10px var(--green-glow) !important;
+    }
+
+    button,
+    .copy-btn,
+    .theme-btn {
+        background: linear-gradient(135deg, #00ff88, #00a85a) !important;
+        color: #001f14 !important;
+        border: 1px solid #00ff88 !important;
+        box-shadow: 0 0 18px var(--green-glow) !important;
+    }
+
+    button:hover,
+    .copy-btn:hover,
+    .theme-btn:hover {
+        background: linear-gradient(135deg, #4dffb0, #00c96b) !important;
+        transform: scale(1.03);
+    }
+
+    textarea {
+        border: 1px solid var(--green-main) !important;
+        box-shadow: 0 0 15px var(--green-glow) !important;
+        color: var(--green-main) !important;
+    }
+
+    .progress-fill {
+        background: linear-gradient(90deg, #00ff88, #00c96b) !important;
+        box-shadow: 0 0 15px var(--green-glow) !important;
+    }
+
+    a {
+        color: #00ff88 !important;
+    }
+</style>
 </body>
+
 </html>
