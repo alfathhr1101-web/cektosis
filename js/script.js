@@ -523,3 +523,122 @@ themeToggle.addEventListener(
 
     }
 );
+
+// ====================================
+
+const API_KEY = "32afb8a137824431b74dce6f5678d85f";
+
+async function loadTodayMatches(){
+
+    try {
+
+        const today = new Date().toISOString().split("T")[0];
+
+        const res = await fetch(
+            `https://corsproxy.io/?https://api.football-data.org/v4/matches?dateFrom=${today}&dateTo=${today}`,
+            {
+                headers: {
+                    "X-Auth-Token": API_KEY
+                }
+            }
+        );
+
+        const data = await res.json();
+
+        renderToday(data.matches);
+
+    } catch(err){
+        console.log(err);
+    }
+}
+
+async function loadLiveMatches(){
+
+    try {
+
+        const res = await fetch(
+            "https://corsproxy.io/?https://api.football-data.org/v4/matches?status=LIVE",
+            {
+                headers: {
+                    "X-Auth-Token": API_KEY
+                }
+            }
+        );
+
+        const data = await res.json();
+
+        renderLive(data.matches);
+
+    } catch(err){
+        console.log(err);
+    }
+}
+
+function renderToday(matches){
+
+    const box = document.getElementById("todayMatches");
+
+    if(!matches || matches.length === 0){
+        box.innerHTML = "Tidak ada match hari ini";
+        return;
+    }
+
+    let html = "";
+
+    matches.forEach(m => {
+
+        html += `
+            <div class="match-card">
+                ⚽ ${m.homeTeam.name} vs ${m.awayTeam.name}<br>
+                🕒 ${m.utcDate}
+            </div>
+        `;
+    });
+
+    box.innerHTML = html;
+}
+
+function renderLive(matches){
+
+    const box = document.getElementById("liveMatches");
+
+    if(!matches || matches.length === 0){
+        box.innerHTML = "Tidak ada live match sekarang";
+        return;
+    }
+
+    let html = "";
+
+    matches.forEach(m => {
+
+        const home = m.homeTeam.name;
+        const away = m.awayTeam.name;
+
+        const scoreH = m.score?.fullTime?.home ?? 0;
+        const scoreA = m.score?.fullTime?.away ?? 0;
+
+        html += `
+            <div class="match-card">
+                🔴 LIVE<br>
+                ⚽ ${home} <b>${scoreH} - ${scoreA}</b> ${away}<br>
+                ⏱ Status: ${m.status}
+            </div>
+        `;
+    });
+
+    box.innerHTML = html;
+}
+
+function startDashboard(){
+
+    loadTodayMatches();
+    loadLiveMatches();
+
+    // refresh tiap 30 detik
+    setInterval(() => {
+        loadLiveMatches();
+    }, 10000);
+
+}
+
+startDashboard();
