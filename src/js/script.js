@@ -51,7 +51,7 @@ function hitungTO(){
                     saldoBonus * multiplier;
 
                 jenisBonus =
-                    "MANIAK";
+                    "MANIAK SLOT";
 
                 break;
             }
@@ -642,3 +642,9 @@ function startDashboard(){
 }
 
 startDashboard();
+// ====================================
+// GLOBAL FUNCTION UNTUK VITE
+// ====================================
+
+window.hitungTO = hitungTO;
+window.copyHasil = copyHasil;
