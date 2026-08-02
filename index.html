@@ -1,282 +1,111 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance</title>
 
-    <meta charset="UTF-8">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+    color:#e5e7eb;
+}
 
-    <title>TO CHECK</title>
+/* container */
+.container{
+    text-align:center;
+    max-width:520px;
+    padding:30px;
+}
 
-    <!-- favicon -->
+/* icon */
+.icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
 
-    <link
-        rel="icon"
-        type="image/png"
-        sizes="64x64"
-        href="assets/logo.png"
-    >
+/* title */
+h1{
+    font-size:26px;
+    margin-bottom:10px;
+    font-weight:600;
+}
 
-    <link
-        rel="apple-touch-icon"
-        href="assets/logo.png"
-    >
+/* text */
+p{
+    font-size:14px;
+    color:#94a3b8;
+    line-height:1.6;
+}
 
-    <!-- css -->
+/* small info */
+.small{
+    margin-top:12px;
+    font-size:12px;
+    color:#64748b;
+}
 
-   <link rel="stylesheet" href="css/style.css">
+/* button */
+a{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    color:white;
+    background:#22c55e;
+    font-size:13px;
+}
+
+a:hover{
+    opacity:0.9;
+}
+.logo{
+    width:115px;
+    margin-bottom:18px;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 25px rgba(56,189,248,0.3));
+}
+</style>
 
 </head>
 
 <body>
 
-    <!-- intro loading -->
+<div class="container">
 
-<div class="intro-loading" id="introLoading">
+    <img src="assets/logo.png" class="logo">
 
-    <div class="intro-box">
+    <div class="icon">🚧🚧🚧🚧🚧</div>
 
-        <img
-            src="assets/logo.png"
-            class="intro-logo"
-        >
+    <h1>Website Sedang Maintenance</h1>
 
+    <p>
+        Kami sedang melakukan perbaikan sistem untuk meningkatkan performa dan keamanan website.
+    </p>
 
-    </div>
+    <p class="small">
+        Mohon kembali beberapa saat lagi.
+    </p>
 
-</div>
-
-    <!-- container -->
-
-    <div class="container">
-<div class="dashboard">
-
-    <h2>⚽ Football Dashboard</h2>
-
-    <!-- TODAY MATCH -->
-    <div>
-        <h3>📅 Today Matches</h3>
-        <div id="todayMatches">Loading...</div>
-    </div>
-
-    <!-- LIVE MATCH -->
-    <div>
-        <h3>🔴 Live Matches</h3>
-        <div id="liveMatches">Loading...</div>
-    </div>
+    <a href="https://wa.me/855765772633" target="_blank">
+        Hubungi developer
+    </a>
 
 </div>
-
-        <!-- topbar -->
-
-        <div class="topbar">
-
-    <div class="top-left">
-
-        <img
-            src="assets/logo.png"
-            class="header-logo"
-        >
-
-        <h1>Turn Over Check</h1>
-
-    </div>
-
-    <div class="top-right">
-
-        <button
-            id="themeToggle"
-            class="theme-btn"
-        >
-            🌙
-        </button>
-
-        <div class="contact">
-
-            <div>Jika Ada Kendala</div>
-
-            <a
-                href="https://wa.me/855765772633"
-                target="_blank"
-            >
-                Klik WhatsApp
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-        <!-- info -->
-<div class="running-text">
-
-    <div class="running-content">
-
-        SIS4D •
-        SIS4D •
-        SIS4D •
-        SIS4D •
-        SIS4D •
-        SIS4D •
-        SIS4D •
-        SIS4D •
-        SIS4D •
-
-    </div>
-
-</div>
-
-        <div class="info">
-
-            Paste full history transaksi bre
-
-        </div>
-
-        <!-- textarea -->
-
-        <textarea
-            id="inputData"
-            placeholder="Paste history transaksi disini bre..."
-        ></textarea>
-
-        <!-- button -->
-
-       <div class="action-buttons">
-
-    <button onclick="hitungTO()">
-        Hitung TO Bre
-    </button>
-
-    <button
-        class="copy-btn"
-        onclick="copyHasil()"
-    >
-        Copy Hasil Bre
-    </button>
-
-</div>
-
-        <!-- summary -->
-
-        <div class="summary">
-
-            <div class="card">
-
-                <h3>Jenis TO</h3>
-
-                <p id="bonusType">-</p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Saldo Dasar</h3>
-
-                <p id="bonusSaldo">0</p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Target TO</h3>
-
-                <p id="targetTO">0</p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>TO Dimainkan</h3>
-
-                <p id="playedTO">0</p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Sisa TO</h3>
-
-                <p id="sisaTO">0</p>
-
-            </div>
-
-        </div>
-
-        <div class="progress-wrapper">
-
-    <div class="progress-info">
-
-        <span>Progress TO</span>
-
-        <span id="progressPercent">
-            0%
-        </span>
-
-    </div>
-
-    <div class="progress-bar">
-
-        <div
-            class="progress-fill"
-            id="progressFill"
-        ></div>
-
-    </div>
-
-</div>
-        <!-- table -->
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Tanggal</th>
-
-                        <th>Game</th>
-
-                        <th>ID Transaksi</th>
-
-                        <th>Deskripsi</th>
-
-                        <th>Debit</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="resultBody">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-    <!-- footer -->
-
-    <div class="footer">
-
-        © 2015 SIS4D. Allrights Reserved
-
-    </div>
-
-    <!-- js -->
-
-    <script src="js/script.js"></script>
-<div id="toast" class="toast">
-    Berhasil di copy bre😎
+<div id="goalOverlay" class="goal-overlay">
+    <div class="goal-text">GOAL! ⚽🔥</div>
 </div>
 </body>
-
 </html>
