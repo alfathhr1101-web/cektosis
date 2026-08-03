@@ -473,6 +473,6 @@ function showToast(text){
 
         toast.classList.remove("show");
 
-    },2000);
+    },1800);
 
 }
