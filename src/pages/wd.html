@@ -1,0 +1,166 @@
+<div class="container">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div class="top-left">
+
+            <button
+                id="backChecker"
+                class="theme-btn"
+            >
+                ←
+            </button>
+
+            <h1>📄 WD Parser</h1>
+
+        </div>
+
+    </div>
+
+    <!-- INFO -->
+
+    <div class="info">
+
+        Paste History WD dari panel, lalu klik
+        <b>Parse WD</b>
+
+    </div>
+
+    <!-- TEXTAREA -->
+
+    <textarea
+        id="wdInput"
+        placeholder="Paste History WD disini..."
+    ></textarea>
+
+    <!-- BUTTON -->
+
+    <div class="action-buttons">
+
+        <button
+            id="parseWD"
+        >
+            Parse WD
+        </button>
+
+        <button
+            id="copyWD"
+            class="copy-btn"
+        >
+            Copy Spreadsheet
+        </button>
+
+    </div>
+
+    <!-- SUMMARY -->
+
+    <div class="summary">
+
+        <div class="card">
+
+            <h3>Total WD</h3>
+
+            <p id="wdTotal">
+
+                0
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Total Nominal</h3>
+
+            <p id="wdNominal">
+
+                0
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- FILTER CS -->
+
+<div class="cs-filter">
+
+    <button class="cs-btn active" data-cs="ALL">
+        SEMUA
+    </button>
+
+    <button class="cs-btn" data-cs="robi">
+        ROBI
+    </button>
+
+    <button class="cs-btn" data-cs="reza">
+        REZA
+    </button>
+
+    <button class="cs-btn" data-cs="eci">
+        ECI
+    </button>
+
+    <button class="cs-btn" data-cs="wahyu">
+        WAHYU
+    </button>
+
+    <button class="cs-btn" data-cs="rayyan">
+        RAYYAN
+    </button>
+
+    <button class="cs-btn" data-cs="noel">
+        NOEL
+    </button>
+
+    <button class="cs-btn" data-cs="alfath">
+        ALFATH
+    </button>
+
+</div>
+
+
+    <!-- TABLE -->
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>TANGGAL</th>
+
+                    <th>NAMA</th>
+
+                    <th>KELUAR</th>
+
+                    <th>MASUK</th>
+
+                    <th>SALDO</th>
+
+                    <th>USER</th>
+
+                    <th>CS</th>
+
+                    <th>KETERANGAN</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="wdResult">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+<div id="toast" class="toast"></div>

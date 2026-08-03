@@ -393,17 +393,6 @@ if(percent < 50){
 
 }
 
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        document
-            .getElementById("introLoading")
-            .classList.add("hide");
-
-    }, 1800);
-
-});
 
 // ====================================
 // COPY HASIL
@@ -457,75 +446,43 @@ setTimeout(() => {
 
 }
 
-// ====================================
-// DARK MODE
-// ====================================
 
-const themeToggle =
-    document.getElementById(
-        "themeToggle"
-    );
-
-// cek local storage
-
-if(
-
-    localStorage.getItem("theme")
-    === "dark"
-
-){
-
-    document.body.classList.add(
-        "dark"
-    );
-
-    themeToggle.innerHTML = "☀️";
-}
-
-// toggle mode
-
-themeToggle.addEventListener(
-    "click",
-    () => {
-
-        document.body.classList.toggle(
-            "dark"
-        );
-
-        // cek dark aktif
-
-        if(
-
-            document.body.classList.contains(
-                "dark"
-            )
-
-        ){
-
-            localStorage.setItem(
-                "theme",
-                "dark"
-            );
-
-            themeToggle.innerHTML =
-                "☀️";
-
-        }else{
-
-            localStorage.setItem(
-                "theme",
-                "light"
-            );
-
-            themeToggle.innerHTML =
-                "🌙";
-        }
-
-    }
-);
 // ====================================
 // GLOBAL FUNCTION UNTUK VITE
 // ====================================
 
 window.hitungTO = hitungTO;
 window.copyHasil = copyHasil;
+
+import { loadPage } from "./router.js";
+
+const wdMenu =
+    document.getElementById("wdMenu");
+
+if(wdMenu){
+
+    wdMenu.addEventListener("click",async()=>{
+
+        await loadPage("wd");
+
+    });
+
+}
+
+export function initChecker() {
+
+    const wdMenu = document.getElementById("wdMenu");
+
+    if (wdMenu) {
+
+        wdMenu.onclick = async () => {
+
+            const { loadPage } = await import("./router.js");
+
+            loadPage("wd");
+
+        };
+
+    }
+
+}
