@@ -265,7 +265,9 @@ hasilWD.push({
 
     }
 
-    console.log(hasilWD);
+hasilWD.reverse();
+
+console.log(hasilWD);
 
 renderTable();
 
