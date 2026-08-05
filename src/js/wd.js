@@ -1,11 +1,23 @@
+import { loadPage } from "./router.js";
+
 let hasilWD = [];
 
 let currentCS = "ALL";
 
 export function initWD() {
 
-    const parseBtn = document.getElementById("parseWD");
-    const copyBtn  = document.getElementById("copyWD");
+// ==========================
+// BUTTON
+// ==========================
+
+const parseBtn =
+    document.getElementById("parseWD");
+
+const copyBtn =
+    document.getElementById("copyWD");
+
+const backBtn =
+    document.getElementById("backWD");
 
     if (parseBtn) {
         parseBtn.onclick = parseHistory;
@@ -14,6 +26,20 @@ export function initWD() {
     if (copyBtn) {
         copyBtn.onclick = copySpreadsheet;
     }
+
+    if(backBtn){
+
+    backBtn.onclick = ()=>{
+
+        loadPage("checker");
+
+    };
+
+}
+
+// ==========================
+// FILTER CS
+// ==========================
 
     document.querySelectorAll(".cs-btn").forEach(btn => {
 
@@ -37,29 +63,7 @@ export function initWD() {
 
 } 
 
-function baris(
 
-    nama,
-    nominal,
-    user=""
-
-){
-
-    return [
-
-        nama,
-
-        nominal,
-
-        "",
-
-        "",
-
-        user
-
-    ].join("\t");
-
-}
 
 async function copySpreadsheet(){
 
@@ -73,21 +77,19 @@ async function copySpreadsheet(){
 
     let hasil = "";
 
-    hasilWD
+const data = hasilWD.filter(item=>{
 
-.filter(item => {
-
-    if (currentCS === "ALL") {
+    if(currentCS==="ALL"){
 
         return true;
 
     }
 
-    return item.cs.toLowerCase() === currentCS.toLowerCase();
+    return item.cs.toLowerCase()===currentCS.toLowerCase();
 
-})
+});
 
-.forEach(item => {
+data.forEach(item=>{
 
 hasil +=
 baris(
@@ -152,6 +154,30 @@ baris(
         );
 
     }
+
+}
+
+function baris(
+
+    nama,
+    nominal,
+    user=""
+
+){
+
+    return [
+
+        nama,
+
+        nominal,
+
+        "",
+
+        "",
+
+        user
+
+    ].join("\t");
 
 }
 
@@ -273,81 +299,7 @@ renderTable();
 
 }
 
-function parseBlock(block){
 
-    const tanggal =
-        block.find(x=>/\d{2}\s[A-Za-z]{3}\s\d{4}/.test(x)) || "";
-
-    const user =
-        block.find(x=>
-
-            !x.includes("-") &&
-            !x.includes(",") &&
-            !/\d{2}\s[A-Za-z]{3}/.test(x) &&
-            x!=="---"
-
-        ) || "";
-
-    const tujuan =
-        block.find(x=>
-
-            x.includes("xxxxx")
-
-        ) || "";
-
-    const asal =
-        block.find((x,index)=>
-
-            index>block.indexOf(tujuan) &&
-            x.includes("-")
-
-        ) || "";
-
-    const nominal =
-        block.find(x=>
-
-            /^\d[\d,]*$/.test(x)
-
-        ) || "";
-
-    const cs =
-        block[block.length-1];
-
-    let bank = "";
-
-    let nama = "";
-
-    if(tujuan){
-
-        const pecah =
-            tujuan.split("-");
-
-        bank =
-            pecah[0].trim();
-
-        nama =
-            pecah[pecah.length-1].trim();
-
-    }
-
-    return{
-
-        tanggal:
-            tanggal.split(" ").slice(0,2).join(" "),
-
-        bank,
-
-        nama,
-
-        nominal,
-
-        user,
-
-        cs
-
-    };
-
-}
 
 function renderTable(){
 

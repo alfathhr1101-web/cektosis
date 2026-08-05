@@ -1,52 +1,53 @@
+import { initLayout } from "./layout.js";
+
 export async function loadPage(page){
 
     const app =
         document.getElementById("app");
 
-const response =
-    await fetch(`/pages/${page}.html`);
+    const response =
+        await fetch(`/pages/${page}.html`);
 
     app.innerHTML =
         await response.text();
 
+    initLayout();
 
-if (page === "checker") {
+    if(page==="checker"){
 
-    const { initChecker } =
-        await import("./checker.js");
+        const { initChecker } =
+            await import("./checker.js");
 
-    const { initDarkMode } =
-        await import("./darkmode.js");
+        const { initDarkMode } =
+            await import("./darkmode.js");
 
-    const { initLoading } =
-        await import("./loading.js");
+        const { initLoading } =
+            await import("./loading.js");
 
-    initChecker();
-    initDarkMode();
-    initLoading();
+        initChecker();
 
-}
+        initDarkMode();
 
-if (page === "wd") {
-
-    const { initWD } =
-        await import("./wd.js");
-
-    initWD();
-
-    const back =
-        document.getElementById("backChecker");
-
-    if (back) {
-
-        back.onclick = () => {
-
-            loadPage("checker");
-
-        };
+        initLoading();
 
     }
 
-}
+    if(page==="wd"){
+
+        const { initWD } =
+            await import("./wd.js");
+
+        initWD();
+
+    }
+
+    if(page==="depo"){
+
+        const { initDepo } =
+            await import("./depo.js");
+
+        initDepo();
+
+    }
 
 }

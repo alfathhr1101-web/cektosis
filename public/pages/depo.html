@@ -1,0 +1,142 @@
+<div class="container">
+
+    <div class="wd-header">
+
+        <button
+            id="backDepo"
+            class="back-btn"
+        >
+            ←
+        </button>
+
+        <h2>
+            💰 CSV DEPO
+        </h2>
+
+    </div>
+
+    <p class="wd-info">
+        Paste History Deposit dari panel, lalu klik Parse Deposit
+    </p>
+
+    <textarea
+        id="depoInput"
+        class="wd-textarea"
+        placeholder="Paste History Deposit disini..."
+    ></textarea>
+
+    <div class="wd-action">
+
+        <button
+            id="parseDepo"
+            class="pink-btn"
+        >
+            Parse Deposit
+        </button>
+
+        <button
+            id="copyDepo"
+            class="dark-btn"
+        >
+            Copy Spreadsheet
+        </button>
+
+    </div>
+
+    <div class="summary">
+
+    <div class="card">
+
+        <h3>Total Deposit</h3>
+
+        <p id="depoTotal">
+
+            0
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Total Nominal</h3>
+
+        <p id="depoNominal">
+
+            0
+
+        </p>
+
+    </div>
+
+</div>
+
+    <div class="cs-filter">
+
+        <button
+            class="cs-btn active"
+            data-cs="ALL"
+        >
+            ALL
+        </button>
+
+        <button
+            class="cs-btn"
+            data-cs="SERVER"
+        >
+            SERVER
+        </button>
+
+        <button
+            class="cs-btn"
+            data-cs="BOBBY"
+        >
+            BOBBY
+        </button>
+
+        <button
+            class="cs-btn"
+            data-cs="YOGI"
+        >
+            YOGI
+        </button>
+
+    </div>
+
+    <table class="wd-table">
+
+        <thead>
+
+            <tr>
+
+                <th>TANGGAL</th>
+
+                <th>USERNAME</th>
+
+                <th>BANK ASAL</th>
+
+                <th>BANK TUJUAN</th>
+
+                <th>BONUS</th>
+
+                <th>JUMLAH</th>
+
+                <th>NOTE</th>
+
+                <th>ADMIN</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="depoResult">
+
+        </tbody>
+
+    </table>
+
+</div>
+<div
+    id="toast"
+    class="toast"
+></div>

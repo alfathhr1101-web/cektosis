@@ -1,0 +1,392 @@
+/* ===========================
+   CONTAINER
+=========================== */
+
+.container{
+
+    max-width:1200px;
+
+    margin:30px auto;
+
+    padding:26px;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   TOPBAR
+=========================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.top-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.top-left h1{
+
+    font-size:32px;
+
+    color:#ff4aa2;
+
+    font-weight:700;
+
+}
+
+/* ===========================
+   INFO
+=========================== */
+
+.info{
+
+    margin-bottom:15px;
+
+    color:#555;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   TEXTAREA
+=========================== */
+
+textarea{
+
+    width:100%;
+
+    height:210px;
+
+    resize:vertical;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:1px solid #ffd3e7;
+
+    outline:none;
+
+    font-size:14px;
+
+    margin-bottom:20px;
+
+    font-family:monospace;
+
+}
+
+textarea:focus{
+
+    border-color:#ff4aa2;
+
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.action-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-bottom:25px;
+
+}
+
+.action-buttons button{
+
+    border:none;
+
+    padding:13px 24px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.pink-btn{
+
+    background:#ff4aa2;
+
+    color:white;
+
+}
+
+.copy-btn{
+
+    background:#1e293b;
+
+    color:white;
+
+}
+
+.theme-btn{
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#ff4aa2;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+/* ===========================
+   SUMMARY
+=========================== */
+
+.summary{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-bottom:25px;
+
+}
+
+.card{
+
+    background:white;
+
+    border:1px solid #ffd5e8;
+
+    border-radius:18px;
+
+    padding:22px;
+
+}
+
+.card h3{
+
+    color:#666;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+
+}
+
+.card p{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#ff2d8f;
+
+}
+
+/* ===========================
+   FILTER
+=========================== */
+
+.cs-filter{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:22px;
+
+}
+
+.cs-btn{
+
+    border:none;
+
+    background:#ececec;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.cs-btn.active{
+
+    background:#ff4aa2;
+
+    color:white;
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.table-wrapper{
+
+    overflow:auto;
+
+    border-radius:18px;
+
+    border:1px solid #ffd5e8;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#fff3f8;
+
+}
+
+th{
+
+    padding:15px;
+
+    font-size:13px;
+
+    color:#666;
+
+    white-space:nowrap;
+
+}
+
+td{
+
+    padding:14px;
+
+    border-top:1px solid #f3f3f3;
+
+    font-size:14px;
+
+}
+
+tbody tr:hover{
+
+    background:#fff9fc;
+
+}
+
+/* ===========================
+   TOAST
+=========================== */
+
+.toast{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    background:#ff4aa2;
+
+    color:white;
+
+    padding:14px 22px;
+
+    border-radius:14px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.25s;
+
+    z-index:9999;
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+    .container{
+
+        margin:12px;
+
+        padding:18px;
+
+    }
+
+    .summary{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .top-left h1{
+
+        font-size:22px;
+
+    }
+
+    textarea{
+
+        height:180px;
+
+    }
+
+}
